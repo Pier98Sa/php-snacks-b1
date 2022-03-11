@@ -1,28 +1,34 @@
 <?php
-    //parametri presi con GET
-    $name = $_GET['name'];
-    $email = $_GET['email'];
-    $age = $_GET['age'];
 
-    //lunghezza della striga nome
-    $nameLength = strlen($name);
-
-    //validazione dell'email
-    if (strpos($email, '@') !== false && strpos($email, '.') !== false) {
-        $validEmail = true;
-    } else {
-        $validEmail = false;
-    }
-
-    //validazione del dato age
-    $validAge = is_numeric($age);
-
-    //stampa dell'Esito
-    if( ($nameLength > 3) && ($validEmail) && ($validAge)){
-        $esito = "Accesso riuscito";
+    if(empty($_GET['name']) || empty($_GET['email']) || empty($_GET['age'])){
+        $esito = "Parametri mancanti";
     }else{
-        $esito = "Accesso negato";
+        //parametri presi con GET
+        $name = $_GET['name'];
+        $email = $_GET['email'];
+        $age = $_GET['age'];
+
+        //lunghezza della striga nome
+        $nameLength = strlen($name);
+
+        //validazione dell'email
+        if (strpos($email, '@') !== false && strpos($email, '.') !== false) {
+            $validEmail = true;
+        } else {
+            $validEmail = false;
+        }
+
+        //validazione del dato age
+        $validAge = is_numeric($age);
+
+        //stampa dell'Esito
+        if( ($nameLength > 3) && ($validEmail) && ($validAge)){
+            $esito = "Accesso riuscito";
+        }else{
+            $esito = "Accesso negato";
+        }
     }
+    
 ?>
 
 <!DOCTYPE html>
